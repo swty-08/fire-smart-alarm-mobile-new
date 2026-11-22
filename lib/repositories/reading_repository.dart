@@ -11,22 +11,22 @@ class ReadingRepository {
         .orderBy('timestamp', descending: true)
         .snapshots()
         .map((snapshot) {
-          return snapshot.docs.map((doc) {
-            final data = doc.data();
-            final rawTimestamp = data['timestamp'];
-            final parsedTimestamp = rawTimestamp is Timestamp
-                ? rawTimestamp.toDate()
-                : DateTime.now();
+      return snapshot.docs.map((doc) {
+        final data = doc.data();
+        final rawTs = data['timestamp'];
+        final DateTime parsedTime = rawTs is Timestamp
+            ? rawTs.toDate()
+            : DateTime.tryParse(rawTs?.toString() ?? '') ?? DateTime.now();
 
-            return Reading(
-              deviceId: data['deviceId']?.toString() ?? '',
-              smoke: ((data['smoke'] ?? 0) as num).toDouble(),
-              temperature: ((data['temperature'] ?? 0) as num).toDouble(),
-              humidity: ((data['humidity'] ?? 0) as num).toDouble(),
-              status: data['status']?.toString() ?? 'Normal',
-              timestamp: parsedTimestamp,
-            );
-          }).toList();
-        });
+        return Reading(
+          deviceId: data['deviceId']?.toString() ?? '',
+          smoke: (data['smoke'] as num? ?? 0).toDouble(),
+          temperature: (data['temperature'] as num? ?? 0).toDouble(),
+          humidity: (data['humidity'] as num? ?? 0).toDouble(),
+          status: data['status']?.toString() ?? 'Normal',
+          timestamp: parsedTime,
+        );
+      }).toList();
+    });
   }
 }
