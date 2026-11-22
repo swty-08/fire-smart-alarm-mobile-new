@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "799842293739",
+    "project_id": "fire-smart-alarm",
+    "storage_bucket": "fire-smart-alarm.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:799842293739:android:04d8a27785c632c2786bae",
+        "android_client_info": {
+          "package_name": "com.example.fire_smart_alarm_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKinSWUylgVnLxGZQjOBykIlcubS0i6-g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
